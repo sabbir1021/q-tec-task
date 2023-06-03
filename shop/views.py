@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View 
-from .models import GenericCategory, GenericValues ,ProductFilter, Product,  Category
+from .models import GenericFilter,ProductFilter, Product,  Category
 from django.views.generic import ListView
 
 # Create your views here.
@@ -15,7 +15,7 @@ class CategoryProductView(View):
     def get(self, request, pk):
         category = get_object_or_404(Category, id=pk)
         products = Product.objects.filter(category__id = pk)
-        product_filter = GenericCategory.objects.all()
+        product_filter = GenericFilter.objects.all()
         min_price = min(products.values_list('price'))[0]
         max_price = max(products.values_list('price'))[0]
         context = {

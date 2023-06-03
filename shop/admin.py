@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import GenericCategory, GenericValues, Product, ProductFilter, Category
+from .models import GenericFilter, GenericFilterValues, Product, ProductFilter, Category
 # Register your models here.
 
 
 class GenericValuesInline(admin.TabularInline):
-    model = GenericValues
+    model = GenericFilterValues
     extra = 1
 
-@admin.register(GenericCategory)
+@admin.register(GenericFilter)
 class GenericCategoryAdmin(admin.ModelAdmin):
     inlines = [GenericValuesInline]
     list_display = ['name']

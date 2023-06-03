@@ -19,7 +19,7 @@
 
           {% for p_filter in product_filter %}
           <h4>{{p_filter.name}}</h4>
-          {% for value in p_filter.generic_category.all %}
+          {% for value in p_filter.generic_filter.all %}
           <div class="form-check" id="filterForm" category-data = "{{category.id}}" data-filter-url="{% url 'shop:ajax_load_search_and_filter' %}">
             <input class="form-check-input" name="filter[]" type="checkbox" value="{{value.id}}" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">

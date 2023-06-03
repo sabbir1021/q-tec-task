@@ -2,14 +2,14 @@ from django.db import models
 
 # Create your models here.
 
-class GenericCategory(models.Model):
+class GenericFilter(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
     
-class GenericValues(models.Model):
-    category = models.ForeignKey(GenericCategory, on_delete=models.CASCADE, related_name="generic_category") 
+class GenericFilterValues(models.Model):
+    category = models.ForeignKey(GenericFilter, on_delete=models.CASCADE, related_name="generic_filter") 
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -33,5 +33,5 @@ class Product(models.Model):
     
 class ProductFilter(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    category = models.ForeignKey(GenericCategory, on_delete=models.CASCADE)
-    value = models.ForeignKey(GenericValues, on_delete=models.CASCADE)
+    category = models.ForeignKey(GenericFilter, on_delete=models.CASCADE)
+    value = models.ForeignKey(GenericFilterValues, on_delete=models.CASCADE)

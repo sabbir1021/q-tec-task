@@ -19,6 +19,6 @@ if settings.FORCE_STATIC_FILE_SERVING and not settings.DEBUG:
     settings.DEBUG = False
 
 
-admin.site.site_header = "Pet Care Admin"
-admin.site.site_title = "Pet Care Admin Portal"
-admin.site.index_title = "Pet Care Researcher Portal"
+admin.site.site_header = "Q-Tec Admin"
+admin.site.site_title = "Q-Tec Admin Portal"
+admin.site.index_title = "Q-Tec Researcher Portal"
