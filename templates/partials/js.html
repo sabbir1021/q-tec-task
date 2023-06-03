@@ -1,0 +1,55 @@
+{% load static %}
+
+  <script src="{% static '3.3.1main.js' %}"></script>
+
+  
+  <script type="text/javascript">
+    function filterValueCheck() {
+      var filter_value_list=[];
+      $("input:checkbox[name^='filter']").each(function () {
+          if ($(this).is(":checked")) {
+              console.log($(this).val())
+              filter_value_list.push($(this).val());
+          }
+      });
+      console.log(filter_value_list)
+      return filter_value_list
+    }
+
+    $("input:checkbox").click(function () {
+      const price_range = [$("#minPrice").val(), $("#maxPrice").val()]
+      const filter_value_list = filterValueCheck()
+      const category_id = $("#filterForm").attr("category-data");
+      const url = $("#filterForm").attr("data-filter-url");
+      $.ajax({
+        url: url,
+        data: {
+          'price_range' : price_range,
+          'filter_value_list':filter_value_list,
+          'category_id': category_id
+        },
+        success: function (data) {
+          $("#filter_result").html(data);
+        }
+    });
+  });
+
+  function priceRangeFilter() {
+      const price_range = [$("#minPrice").val(), $("#maxPrice").val()]
+      const filter_value_list = filterValueCheck()
+      const category_id = $("#filterForm").attr("category-data");
+      const url = $("#filterForm").attr("data-filter-url");
+      $.ajax({
+        url: url,
+        data: {
+          'price_range' : price_range,
+          'filter_value_list':filter_value_list,
+          'category_id': category_id
+        },
+        success: function (data) {
+          $("#filter_result").html(data);
+        }
+    });
+  }
+  
+</script>
